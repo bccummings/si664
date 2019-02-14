@@ -20,6 +20,9 @@
           <li><a href="{% url 'books' %}">All books</a></li>
           <li><a href="{% url 'authors' %}">All authors</a></li>
           <li><a href="{% url 'my-borrowed' %}">My Borrowed</a></li>
+          {% if perms.catalog.can_mark_returned %}
+            <li><a href="{% url 'all-borrowed'%}">All Borrowed</a></li>
+          {% endif %}
           <p>You have visited this page {{ num_visits }}{% if num_visits == 1 %} time{% else %} times{% endif %}.</p>
 
           {% if user.is_authenticated %}
