@@ -6,7 +6,7 @@ from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.template.loader import render_to_string
 
-from autos.models import Auto, Make
+from models import Auto, Make
 from autos.forms import MakeForm
 
 # Create your views here.
