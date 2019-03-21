@@ -7,7 +7,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class State(models.Model):
+class States(models.Model):
     name = models.CharField(max_length=128)
 
     def __str__(self):
@@ -29,7 +29,7 @@ class Site(models.Model):
     name = models.CharField(max_length=128)
     year = models.IntegerField(null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    state = models.ForeignKey(State, on_delete=models.CASCADE)
+    state = models.ForeignKey(States, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
     iso = models.ForeignKey(Iso, on_delete=models.CASCADE)
 
