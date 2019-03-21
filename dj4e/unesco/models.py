@@ -27,7 +27,12 @@ class Iso(models.Model):
 
 class Site(models.Model):
     name = models.CharField(max_length=128)
+    description = models.TextField(null=True)
+    justification = models.TextField(null=True)
     year = models.IntegerField(null=True)
+    longitude = models.FloatField(null=True)
+    latitude = models.FloatField(null=True)
+    area_hectares = models.FloatField(null=True)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     state = models.ForeignKey(States, on_delete=models.CASCADE)
     region = models.ForeignKey(Region, on_delete=models.CASCADE)
