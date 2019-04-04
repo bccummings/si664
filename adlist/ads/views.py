@@ -15,7 +15,7 @@ class AdDetailView(AdDetailView):
 
 class AdCreateView(AdCreateView):
     model = Ad
-    fields = ['title', 'text']
+    fields = ['title', 'text', 'price']
     template_name = "ad_form.html"
 
 class AdUpdateView(AdUpdateView):
