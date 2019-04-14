@@ -5,10 +5,11 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.files.uploadedfile import InMemoryUploadedFile
 
 from ads.models import Ad
 from ads.util import AdListView, AdDetailView, AdCreateView, AdUpdateView, AdDeleteView
-from django.core.files.uploadedfile import InMemoryUploadedFile
+from ads.forms import CreateForm
 
 class AdListView(AdListView):
     model = Ad
