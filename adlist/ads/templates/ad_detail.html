@@ -9,6 +9,9 @@
 {% endif %}
 </span>
 <h1>{{ ad.title }}</h1>
+{% if pic.content_type %}
+<img style="float:right; max-width:50%;" src="{% url 'pic_picture' pic.id %}">
+{% endif %}
 <p>
 {{ ad.text }}
 </p>
