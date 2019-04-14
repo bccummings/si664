@@ -77,7 +77,7 @@ class AdDeleteView(AdDeleteView):
     template_name = "ad_delete.html"
 
 def stream_file(request, pk) :
-    pic = get_object_or_404(Pic, id=pk)
+    ad = get_object_or_404(Ad, id=pk)
     response = HttpResponse()
     response['Content-Type'] = ad.content_type
     response['Content-Length'] = len(ad.picture)
