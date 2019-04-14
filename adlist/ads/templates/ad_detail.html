@@ -10,7 +10,7 @@
 </span>
 <h1>{{ ad.title }}</h1>
 <h2>Price: ${{ ad.price }}</h2>
-{% if pic.content_type %}
+{% if ad.content_type %}
 <img style="float:right; max-width:50%;" src="{% url 'ad_picture' ad.id %}">
 {% endif %}
 <p>
