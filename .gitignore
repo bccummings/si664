@@ -48,3 +48,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+
+# Other #
+#########
+github_settings.py
