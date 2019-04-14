@@ -51,7 +51,7 @@ class AdCreateView(LoginRequiredMixin, View):
 #     template_name = "ad_form.html"
 
 class AdUpdateView(LoginRequiredMixin, View):
-    template = 'ads/form.html'
+    template = 'ads/ad_form.html'
     success_url = reverse_lazy('ads')
     def get(self, request, pk) :
         ad = get_object_or_404(Ad, id=pk, owner=self.request.user)
