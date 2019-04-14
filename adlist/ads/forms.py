@@ -1,7 +1,7 @@
 from django import forms
-from pics.models import Pic
+from ads.models import Ad
 from django.core.files.uploadedfile import InMemoryUploadedFile
-from pics.humanize import naturalsize
+from ads.humanize import naturalsize
 
 # https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
 # https://stackoverflow.com/questions/2472422/django-file-upload-size-limit
@@ -20,8 +20,8 @@ class CreateForm(forms.ModelForm):
     upload_field_name = 'picture'
 
     class Meta:
-        model = Pic
-        fields = ['title', 'text', 'picture']  # Picture is manual
+        model = Ad
+        fields = ['title', 'text', 'price', 'picture']  # Picture is manual
 
     # Validate the size of the picture
     def clean(self) :
@@ -30,7 +30,7 @@ class CreateForm(forms.ModelForm):
         if pic is None : return
         if len(pic) > self.max_upload_limit:
             self.add_error('picture', "File must be < "+self.max_upload_limit_text+" bytes")
-            
+
     # Convert uploaded File object to a picture
     def save(self, commit=True) :
         instance = super(CreateForm, self).save(commit=False)
@@ -46,4 +46,3 @@ class CreateForm(forms.ModelForm):
             instance.save()
 
         return instance
-
