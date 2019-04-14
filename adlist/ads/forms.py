@@ -2,6 +2,8 @@ from django import forms
 from ads.models import Ad
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from ads.humanize import naturalsize
+from django.core.exceptions import ValidationError
+from django.core import validators
 
 # https://docs.djangoproject.com/en/2.1/topics/http/file-uploads/
 # https://stackoverflow.com/questions/2472422/django-file-upload-size-limit
@@ -46,3 +48,6 @@ class CreateForm(forms.ModelForm):
             instance.save()
 
         return instance
+
+class CommentForm(forms.Form):
+    comment = forms.CharField(required=True, max_length=500, min_length=3, strip=True)
