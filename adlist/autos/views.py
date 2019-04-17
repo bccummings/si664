@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
-from autos.models import Auto, Comment, Fav
+from autos.models import Auto, Comment
 from autos.forms import CommentForm
 from autos.util import AutoListView, AutoDetailView, AutoCreateView, AutoUpdateView, AutoDeleteView
 from autos.forms import CreateForm
@@ -118,32 +118,3 @@ class CommentDeleteView(AutoDeleteView):
     def get_success_url(self):
         auto = self.object.auto
         return reverse_lazy('auto_detail', args=[auto.id])
-
-# https://stackoverflow.com/questions/16458166/how-to-disable-djangos-csrf-validation
-from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
-from django.db.utils import IntegrityError
-
-@method_decorator(csrf_exempt, name='dispatch')
-class AddFavoriteView(LoginRequiredMixin, View):
-    def post(self, request, pk) :
-        print("Add PK",pk)
-        t = get_object_or_404(Auto, id=pk)
-        fav = Fav(user=request.user, auto=t)
-        try:
-            fav.save()  # In case of duplicate key
-        except IntegrityError as e:
-            pass
-        return HttpResponse()
-
-@method_decorator(csrf_exempt, name='dispatch')
-class DeleteFavoriteView(LoginRequiredMixin, View):
-    def post(self, request, pk) :
-        print("Delete PK",pk)
-        t = get_object_or_404(Auto, id=pk)
-        try:
-            fav = Fav.objects.get(user=request.user, auto=t).delete()
-        except Fav.DoesNotExist as e:
-            pass
-
-        return HttpResponse()
