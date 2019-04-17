@@ -14,15 +14,15 @@ class AutoListView(AutoListView):
     model = Auto
     template_name = "auto_list.html"
 
-    def get(self, request) :
-        auto_list = Auto.objects.all()
-        favorites = list()
-        if request.user.is_authenticated:
-            # rows = [{'id': 2}]  (A list of rows)
-            rows = request.user.favorite_autos.values('id')
-            favorites = [ row['id'] for row in rows ]
-        ctx = {'auto_list' : auto_list, 'favorites': favorites}
-        return render(request, self.template_name, ctx)
+    # def get(self, request) :
+    #     auto_list = Auto.objects.all()
+    #     favorites = list()
+    #     if request.user.is_authenticated:
+    #         # rows = [{'id': 2}]  (A list of rows)
+    #         rows = request.user.favorite_autos.values('id')
+    #         favorites = [ row['id'] for row in rows ]
+    #     ctx = {'auto_list' : auto_list, 'favorites': favorites}
+    #     return render(request, self.template_name, ctx)
 
 class AutoDetailView(AutoDetailView):
     model = Auto
