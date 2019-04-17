@@ -6,7 +6,7 @@
 <ul>
   {% for auto in auto_list %}
     <li>
-        <a href="{% url 'auto_detail'  auto.id %}">{{ auto.title }}</a>
+        <a href="{% url 'auto_detail'  auto.id %}">{{ auto.name }}</a>
         {% if auto.owner == user %}
         (<a href="{% url 'auto_update' auto.id %}">Edit</a> |
         <a href="{% url 'auto_delete' auto.id %}">Delete</a>)
