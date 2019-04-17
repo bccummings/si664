@@ -11,13 +11,8 @@ urlpatterns = [
         views.AutoUpdateView.as_view(success_url=reverse_lazy('autos')), name='auto_update'),
     path('auto/<int:pk>/delete',
         views.AutoDeleteView.as_view(success_url=reverse_lazy('autos')), name='auto_delete'),
-    path('auto_picture/<int:pk>', views.stream_file, name='auto_picture'),
     path('auto/<int:pk>/comment',
         views.CommentCreateView.as_view(), name='comment_create'),
     path('comment/<int:pk>/delete',
         views.CommentDeleteView.as_view(success_url=reverse_lazy('forums')), name='comment_delete'),
-    path('auto/<int:pk>/favorite',
-        views.AutodFavoriteView.as_view(), name='auto_favorite'),
-    path('auto/<int:pk>/unfavorite',
-        views.DeleteFavoriteView.as_view(), name='auto_unfavorite'),
 ]
