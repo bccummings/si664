@@ -62,7 +62,7 @@ class AutoCreateView(AutoCreateView):
 
 class AutoUpdateView(AutoUpdateView):
     model = Auto
-    fields = ['name', 'detail', 'mileage', 'owner']
+    fields = ['title', 'text']
     template_name = "auto_form.html"
 
 # class AutoUpdateView(LoginRequiredMixin, View):
