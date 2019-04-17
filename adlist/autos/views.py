@@ -14,11 +14,11 @@ from autos.util import AutoListView, AutoDetailView, AutoCreateView, AutoUpdateV
 
 class AutoListView(AutoListView):
     model = Auto
-    template_name = "auto_list.html"
+    template_name = "autos/auto_list.html"
 
 class AutoDetailView(AutoDetailView):
     model = Auto
-    template_name = "auto_detail.html"
+    template_name = "autos/auto_detail.html"
     def get(self, request, pk) :
         auto = Auto.objects.get(id=pk)
         comments = Comment.objects.filter(auto=auto).order_by('-updated_at')
@@ -81,7 +81,7 @@ class AutoUpdateView(LoginRequiredMixin, View):
 
 class AutoDeleteView(AutoDeleteView):
     model = Auto
-    template_name = "auto_delete.html"
+    template_name = "autos/auto_delete.html"
 
 def stream_file(request, pk) :
     auto = get_object_or_404(Auto, id=pk)
@@ -102,7 +102,7 @@ class CommentCreateView(LoginRequiredMixin, View):
 
 class CommentDeleteView(AutoDeleteView):
     model = Comment
-    template_name = "comment_delete.html"
+    template_name = "autos/comment_delete.html"
 
     # https://stackoverflow.com/questions/26290415/deleteview-with-a-dynamic-success-url-dependent-on-id
     def get_success_url(self):
