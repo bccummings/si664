@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.files.uploadedfile import InMemoryUploadedFile
 
-from ads.models import Ad, Comment, Fav
+from ads.models import Ad, Comment
 from ads.forms import CommentForm
 from ads.util import AdListView, AdDetailView, AdCreateView, AdUpdateView, AdDeleteView
 from ads.forms import CreateForm
