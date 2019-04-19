@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'ads.apps.AdsConfig',  # Add - Common folder
     'autos.apps.AutosConfig',
     'cats.apps.CatsConfig',
+    'horses.apps.HorsesConfig',
 ]
 
 # When we get to crispy forms :)
